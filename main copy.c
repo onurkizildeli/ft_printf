@@ -42,7 +42,7 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 */
 
-//int	ft_printf(const char *s, ...);
+int	ft_printf(const char *s, ...);
 
 int main(void)
 {
@@ -62,8 +62,6 @@ int main(void)
     // //printf("%u \n", b);
     // //printf();
     // printf("%% \n");
-    ft_printf("%s \n", "xdas");
-
-    printf("%i \n", 052);
-    //ft_printf("%c ", 'j');
+    ft_printf("%c ", 'x');
+    ft_printf("%c ", 'j');
 }

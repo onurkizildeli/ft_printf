@@ -42,33 +42,44 @@ int	ft_printf(const char *s, ...)
 		if (s[i] == '%')
 		{
 			if (s[i + 1] == 'c')
-				ft_putchar(va_arg(ag, int));
+			{
+				ft_putchar(s[i + 1]);
+				char args = va_arg(ag, int);
+				i++;
+			}
 
-			else if (s[i + 1] == 's')
-				ft_putstr(va_arg(ag, char *));
+			// if (s[i + 1] == "s")
+			// {
+			// 	ft_putstr(s);
+			// 	va_arg()
+			// }
 
-			// else if (s[i + 1] == 'd')
-			// 	ft_putstr*(va_arg(ag, char *));
+			// if (s[i + 1] == "p")
+			// {
+			// 	ft_putstr(s);
+			// 	va_arg()
+			// }
 
-			// else if (s[i + 1] == 'p')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'i')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'u')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'x')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'X')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == '%')
-			// 	ft_putstr(va_arg(ag, char *));/
+			// if (s[i + 1] == "d")
+			// {
+			// 	ft_putstr(s);
+			// 	va_arg()
+			// }
+			
+			// if (s[i + 1] == "i")
+			// if (s[i + 1] == "u")
+			// if (s[i + 1] == "x")
+			// if (s[i + 1] == "X")
+			// if (s[i + 1] == "%")
 		}
-		i++;
+
+		//i++;
+
+		// else
+		// {
+		// 	size = ft_strlen(s);
+		// 	ft_putstr(s);
+		// }
 	}
 	va_end(ag);
 

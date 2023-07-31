@@ -58,18 +58,35 @@ void	ft_putchar(char c)
 
 void	ft_putstr(char *s)
 {
-	while (s)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
 		write(1, &s[i], 1);
 		i++;
 	}
 }
 
-void	ft_putstrl(char *s size_t len)
+void	ft_putstrl(char *s, size_t len)
 {
+	int	i;
+
+	i = 0;
 	while (s)
 	{
 		write(1, &s[i], len);
 		i++;
 	}
 }
+
+// void	puthex(char *s)
+// {
+// 	char	hex[];
+// 	int		i;
+
+// 	hex = "0123456789abcdef";
+// 	i = 0;
+
+
+// }
