@@ -44,8 +44,39 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 //int	ft_printf(const char *s, ...);
 
+void	puthex2(int nb)
+{
+	char	hex[16] = "0123456789abcdef";
+	int		i;
+
+	
+	i = 0;
+
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+		ft_putnbr(nb);
+	}
+	else if (nb > 15)
+	{
+		ft_putnbr(nb / 16);
+		ft_putnbr(nb % 16);
+	}
+	else
+	{
+		//nb = hex[nb] + '';
+		write(1, &hex[nb], 1);
+	}
+}
+
 int main(void)
 {
+
     // char c1 = 'a';
     // char c2[]= "a";
     // char s1[] = "";
@@ -65,5 +96,12 @@ int main(void)
     ft_printf("%s \n", "xdas");
 
     printf("%i \n", 052);
+    printf("%x \n", 57);
     //ft_printf("%c ", 'j');
+
+    printf("\n");
+    ft_putnbr(-2147483648);
+    printf("\n");
+
+    puthex2(57);
 }

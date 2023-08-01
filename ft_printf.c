@@ -26,6 +26,28 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 #include "libft_printf.h"
 
+void	*format(char c, va_list ag)
+{
+	if (c == 'c')
+		ft_putchar(va_arg(ag, int));
+	else if (c == 's')
+		ft_putstr(va_arg(ag, char *));
+	else if (c == 'd')
+		ft_putnbr(va_arg(ag, int));
+	// else if (c == 'p')
+	// 	ft_putstr(va_arg(ag, char *));
+	// else if (c == 'i')
+	// 	ft_putstr(va_arg(ag, char *));
+	// else if (c == 'u')
+	// 	ft_putstr(va_arg(ag, char *));
+	// else if (c == 'x')
+	// 	ft_putstr(va_arg(ag, char *));
+	// else if (c == 'X')
+	// 	ft_putstr(va_arg(ag, char *));
+	// else if (c == '%')
+	// 	ft_putstr(va_arg(ag, char *));
+}
+
 int	ft_printf(const char *s, ...)
 {
 	size_t	size;
@@ -33,44 +55,21 @@ int	ft_printf(const char *s, ...)
 	va_list	ag;
 
 	i = 0;
-
-
 	va_start(ag, s);
 	while (s[i])
 	{
-
-		if (s[i] == '%')
+		if (s[i] == '%' && s[i + 1] != '\0')
 		{
-			if (s[i + 1] == 'c')
-				ft_putchar(va_arg(ag, int));
-
-			else if (s[i + 1] == 's')
-				ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'd')
-			// 	ft_putstr*(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'p')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'i')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'u')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'x')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == 'X')
-			// 	ft_putstr(va_arg(ag, char *));
-
-			// else if (s[i + 1] == '%')
-			// 	ft_putstr(va_arg(ag, char *));/
+			format(s[i + 1], ag);
+			i++;
 		}
-		i++;
+		else if (s[i] != '%')
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
+		va_end(ag);
 	}
-	va_end(ag);
 
-	return 0;
+	return (0);
 }
