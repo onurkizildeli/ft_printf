@@ -39,26 +39,27 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 #include "libft_printf.h"
 
-size_t	ft_strlen(char *s)
-{
-	int	i;
+// size_t	ft_strlen(char *s)
+// {
+// 	int	i;
 
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
+// 	i = 0;
+// 	while (s[i])
+// 	{
+// 		i++;
+// 	}
+// 	return (i);
+// }
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_putstr(char *s)
+size_t	ft_putstr(char *s)
 {
-	int	i;
+	size_t	i;
+	size_t	n;
 
 	i = 0;
 	while (s[i])
@@ -66,6 +67,8 @@ void	ft_putstr(char *s)
 		write(1, &s[i], 1);
 		i++;
 	}
+	n = i;
+	return (n)
 }
 
 void	ft_putstrl(char *s, size_t len)
@@ -80,9 +83,11 @@ void	ft_putstrl(char *s, size_t len)
 	}
 }
 
-
-void ft_putnbr(size_t nb)
+size_t	ft_putnbr(size_t nb)
 {
+	size_t	n;
+
+	n = 0;
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
@@ -102,32 +107,36 @@ void ft_putnbr(size_t nb)
 	{
 		nb = nb + '0';
 		write(1, &nb, 1);
+		n++;
 	}
+	return (n);
 }
 
-void	puthex(int nb)
+size_t	ft_puthex(int nb)
 {
+	size_t	n;
 	char	hex[16] = "0123456789abcdef";
 	int		i;
 
+	n = 0;
 	i = 0;
 	if (nb == -2147483648)
-	{
 		write(1, "-2147483648", 11);
-	}
 	else if (nb < 0)
 	{
 		ft_putchar('-');
 		nb = -nb;
-		ft_putnbr(nb);
+		ft_puthex(nb);
 	}
 	else if (nb > 15)
 	{
-		ft_putnbr(nb / 16);
-		ft_putnbr(nb % 16);
+		ft_puthex(nb / 16);
+		ft_puthex(nb % 16);
 	}
 	else
 	{
 		write(1, &hex[nb], 1);
+		n++;
 	}
+	return (n);
 }

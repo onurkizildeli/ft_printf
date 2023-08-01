@@ -11,5 +11,6 @@ void	ft_putchar(char c);
 size_t	ft_strlen(char *s);
 void	ft_putstr(char *s);
 void    ft_putnbr(size_t nb);
+void	ft_puthex(int nb);
 
 #endif

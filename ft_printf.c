@@ -28,12 +28,13 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 void	*format(char c, va_list ag)
 {
+	int	n;
 	if (c == 'c')
-		ft_putchar(va_arg(ag, int));
+		n = ft_putchar(va_arg(ag, int));
 	else if (c == 's')
-		ft_putstr(va_arg(ag, char *));
+		n = ft_putstr(va_arg(ag, char *));
 	else if (c == 'd')
-		ft_putnbr(va_arg(ag, int));
+		n = ft_putnbr(va_arg(ag, int));
 	// else if (c == 'p')
 	// 	ft_putstr(va_arg(ag, char *));
 	// else if (c == 'i')
@@ -46,27 +47,30 @@ void	*format(char c, va_list ag)
 	// 	ft_putstr(va_arg(ag, char *));
 	// else if (c == '%')
 	// 	ft_putstr(va_arg(ag, char *));
+	return (n);
 }
 
 int	ft_printf(const char *s, ...)
 {
-	size_t	size;
+	size_t	printed;
 	size_t	i;
 	va_list	ag;
 
 	i = 0;
+	printed = 0;
 	va_start(ag, s);
 	while (s[i])
 	{
 		if (s[i] == '%' && s[i + 1] != '\0')
 		{
-			format(s[i + 1], ag);
+			printed += (s[i + 1], ag);
 			i++;
 		}
 		else if (s[i] != '%')
 		{
 			ft_putchar(s[i]);
 			i++;
+			printed += i;
 		}
 		va_end(ag);
 	}

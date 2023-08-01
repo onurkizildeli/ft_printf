@@ -44,64 +44,52 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 //int	ft_printf(const char *s, ...);
 
-void	puthex2(int nb)
-{
-	char	hex[16] = "0123456789abcdef";
-	int		i;
+// ft_putptr(void *p)
+// {
+//     int tab[] = p;
+//     int i;
 
-	
-	i = 0;
+//     i = 0;
 
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-	}
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-		ft_putnbr(nb);
-	}
-	else if (nb > 15)
-	{
-		ft_putnbr(nb / 16);
-		ft_putnbr(nb % 16);
-	}
-	else
-	{
-		//nb = hex[nb] + '';
-		write(1, &hex[nb], 1);
-	}
-}
+//     while (i<16)
+//     {
+//         write(1, &tab[i], 1);
+//     }
+    
+// }
 
 int main(void)
 {
 
-    // char c1 = 'a';
-    // char c2[]= "a";
-    // char s1[] = "";
-    // char s2[] = "1234";
-    // int a = -9876;
-    // //long b = 7282462846646;
-    // //int *p = 3131;
-    // unsigned int c = 9876;
-    // printf("%c \n", c1);
-    // printf("%s \n", c2);
-    // printf("%s \n", s1);
-    // printf("%s \n", s2);
-    // printf("%d \n", a);
-    // //printf("%u \n", b);
-    // //printf();
-    // printf("%% \n");
     ft_printf("%s \n", "xdas");
 
     printf("%i \n", 052);
-    printf("%x \n", 57);
+    printf("%x \n", 896);
     //ft_printf("%c ", 'j');
 
     printf("\n");
     ft_putnbr(-2147483648);
     printf("\n");
 
-    puthex2(57);
+    ft_puthex(896);
+
+    int i = 0;
+    // while (i <= 80)
+    // {
+    //     printf("%x, ", i);
+    //     i++;
+    // }
+    
+    // while (i <= 80)
+    // {
+    //     ft_puthex2(i);
+    //     printf("; ");
+    //     i++;
+    // }
+    int *p;
+    int a;
+
+    a = 0;
+    p = &a;
+    //ft_putptr(p);
 }
