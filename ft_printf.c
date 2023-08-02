@@ -26,7 +26,7 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 #include "libft_printf.h"
 
-void	*format(char c, va_list ag)
+int	format(char c, va_list ag)
 {
 	int	n;
 	if (c == 'c')
@@ -63,7 +63,7 @@ int	ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%' && s[i + 1] != '\0')
 		{
-			printed += (s[i + 1], ag);
+			printed += format(s[i + 1], ag);
 			i++;
 		}
 		else if (s[i] != '%')
@@ -73,6 +73,7 @@ int	ft_printf(const char *s, ...)
 			printed += i;
 		}
 		va_end(ag);
+		return (printed);
 	}
 
 	return (0);

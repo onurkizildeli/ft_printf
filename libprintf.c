@@ -51,9 +51,10 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 // 	return (i);
 // }
 
-void	ft_putchar(char c)
+size_t	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }
 
 size_t	ft_putstr(char *s)
@@ -68,7 +69,7 @@ size_t	ft_putstr(char *s)
 		i++;
 	}
 	n = i;
-	return (n)
+	return (n);
 }
 
 void	ft_putstrl(char *s, size_t len)
@@ -97,6 +98,7 @@ size_t	ft_putnbr(size_t nb)
 		ft_putchar('-');
 		nb = -nb;
 		ft_putnbr(nb);
+		n++;
 	}
 	else if (nb > 9)
 	{
@@ -127,6 +129,7 @@ size_t	ft_puthex(int nb)
 		ft_putchar('-');
 		nb = -nb;
 		ft_puthex(nb);
+		n++;
 	}
 	else if (nb > 15)
 	{
@@ -138,5 +141,31 @@ size_t	ft_puthex(int nb)
 		write(1, &hex[nb], 1);
 		n++;
 	}
+	return (n);
+}
+
+size_t	ft_putnbr2(int nb)
+{
+	int		n;
+	int		i;
+	char	s[16];
+
+	n = 0;
+	i = 0;
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+		n++;
+	}
+	while (nb != 0)
+	{
+		s[i] = (nb % 10) + '0';
+		nb /= 10;
+		n++;
+		i++;
+	}
+	while (i--)
+		write(1, &s[i], 1);
 	return (n);
 }

@@ -70,8 +70,13 @@ int main(void)
     printf("\n");
     ft_putnbr(-2147483648);
     printf("\n");
+    ft_putnbr2(-214748368);
+    printf("\n");
 
     ft_puthex(896);
+    printf("\n%ld", ft_puthex(896));
+    printf("\n%ld", ft_putnbr2(-214748368));
+
 
     int i = 0;
     // while (i <= 80)
