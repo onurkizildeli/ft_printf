@@ -49,7 +49,7 @@ int	format(char c, va_list ag)
 	return (n);
 }
 
-int	ft_printf(const char *s, ...)
+size_t	ft_printf(const char *s, ...)
 {
 	size_t	printed;
 	size_t	i;
