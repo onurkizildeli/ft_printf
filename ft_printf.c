@@ -29,24 +29,23 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 int	format(char c, va_list ag)
 {
 	int	n;
+
 	if (c == 'c')
 		n = ft_putchar(va_arg(ag, int));
 	else if (c == 's')
 		n = ft_putstr(va_arg(ag, char *));
-	else if (c == 'd')
+	else if (c == 'd' || c == 'i')
 		n = ft_putnbr(va_arg(ag, int));
-	// else if (c == 'p')
-	// 	ft_putstr(va_arg(ag, char *));
-	// else if (c == 'i')
-	// 	ft_putstr(va_arg(ag, char *));
-	// else if (c == 'u')
-	// 	ft_putstr(va_arg(ag, char *));
-	// else if (c == 'x')
-	// 	ft_putstr(va_arg(ag, char *));
-	// else if (c == 'X')
-	// 	ft_putstr(va_arg(ag, char *));
-	// else if (c == '%')
-	// 	ft_putstr(va_arg(ag, char *));
+	else if (c == '%')
+		ft_putchar('%');
+	else if (c == 'x')
+		ft_puthex(va_arg(ag, unsigned int ));
+	else if (c == 'X')
+		ft_puthex(va_arg(ag, unsigned int ));
+	else if (c == 'u')
+		ft_putunsigned(va_arg(ag, unsigned int));
+	//else if (c == 'p')
+	//	ft_putptr(va_arg(ag, char *));
 	return (n);
 }
 
@@ -63,18 +62,19 @@ int	ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%' && s[i + 1] != '\0')
 		{
-			printed += format(s[i + 1], ag);
+			i++;
+			printed += format(s[i], ag);
 			i++;
 		}
-		else if (s[i] != '%')
+		else
 		{
-			ft_putchar(s[i]);
+			printed += ft_putchar(s[i]);
 			i++;
-			printed += i;
 		}
-		va_end(ag);
-		return (printed);
+
 	}
+	va_end(ag);
+	return (printed);
 
 	return (0);
 }

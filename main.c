@@ -55,46 +55,11 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 //     {
 //         write(1, &tab[i], 1);
 //     }
-    
+	
 // }
 
-int main(void)
+int	main(void)
 {
-
-    ft_printf("%s \n", "xdas");
-
-    printf("%i \n", 052);
-    printf("%x \n", 896);
-    //ft_printf("%c ", 'j');
-
-    printf("\n");
-    ft_putnbr(-2147483648);
-    printf("\n");
-    ft_putnbr2(-214748368);
-    printf("\n");
-
-    ft_puthex(896);
-    printf("\n%ld", ft_puthex(896));
-    printf("\n%ld", ft_putnbr2(-214748368));
-
-
-    int i = 0;
-    // while (i <= 80)
-    // {
-    //     printf("%x, ", i);
-    //     i++;
-    // }
-    
-    // while (i <= 80)
-    // {
-    //     ft_puthex2(i);
-    //     printf("; ");
-    //     i++;
-    // }
-    int *p;
-    int a;
-
-    a = 0;
-    p = &a;
-    //ft_putptr(p);
+	ft_printf("deneme %%");
+	printf("\n");
 }
