@@ -164,7 +164,31 @@ size_t	ft_puthex_c(unsigned int nb)
 	return (n);
 }
 
+size_t	ft_putptr(void *ptr)
+{
+	int				n;
+	int				i;
+	unsigned long int	temp;
+	char			s[16];
+	char			*hex;
 
+	temp = (unsigned long int)ptr;
+	n = 0;
+	i = 0;
+	hex = (char *)malloc(sizeof(char) * 16);
+	hex = "0123456789abcdef";
+	while (temp != 0)
+	{
+		s[i++] = hex[temp % 16];
+		temp /= 16;
+		n++;
+	}
+	n += 2;
+	write(1, "0x", 2);
+	while (i--)
+		write(1, &s[i], 1);
+	return (n);
+}
 
 ////////////////////*!YEDEK FONKSİYONLAR*////////////////////
 

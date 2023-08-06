@@ -44,8 +44,8 @@ int	format(char c, va_list ag)
 		ft_puthex(va_arg(ag, unsigned int ));
 	else if (c == 'u')
 		ft_putunsigned(va_arg(ag, unsigned int));
-	//else if (c == 'p')
-	//	ft_putptr(va_arg(ag, char *));
+	else if (c == 'p')
+		ft_putptr(va_arg(ag, char *));
 	return (n);
 }
 
@@ -71,10 +71,7 @@ int	ft_printf(const char *s, ...)
 			printed += ft_putchar(s[i]);
 			i++;
 		}
-
 	}
 	va_end(ag);
 	return (printed);
-
-	return (0);
 }
