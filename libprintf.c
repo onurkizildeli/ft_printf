@@ -36,29 +36,7 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 */
 
-
 #include "libft_printf.h"
-
-size_t	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-size_t	ft_putstr(char *s)
-{
-	size_t	i;
-	size_t	n;
-
-	i = 0;
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-	n = i;
-	return (n);
-}
 
 size_t	ft_putnbr(int nb)
 {
@@ -166,11 +144,11 @@ size_t	ft_puthex_c(unsigned int nb)
 
 size_t	ft_putptr(void *ptr)
 {
-	int				n;
-	int				i;
+	int					n;
+	int					i;
 	unsigned long int	temp;
-	char			s[16];
-	char			*hex;
+	char				s[16];
+	char				*hex;
 
 	temp = (unsigned long int)ptr;
 	n = 0;
@@ -189,166 +167,3 @@ size_t	ft_putptr(void *ptr)
 		write(1, &s[i], 1);
 	return (n);
 }
-
-////////////////////*!YEDEK FONKSİYONLAR*////////////////////
-
-/*
-
-size_t	ft_putnbr(size_t nb)
-{
-	size_t	n;
-
-	n = 0;
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-	}
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-		ft_putnbr(nb);
-		n++;
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		nb = nb + '0';
-		write(1, &nb, 1);
-		n++;
-	}
-	return (n);
-}
-
-
-void	ft_putstrl(char *s, size_t len)
-{
-	int	i;
-
-	i = 0;
-	while (s)
-	{
-		write(1, &s[i], len);
-		i++;
-	}
-}
-
-
-size_t	ft_putptr(void *p)
-{
-	int		n;
-	int		i;
-	char	s[16];
-	char	hex[16];
-
-	n = 0;
-	i = 0;
-	s = (char *)p;
-	hex[16] = "0123456789abcdef";
-	if (nb == 0)
-	{
-		write(1, "0", 1);
-		return (1);
-	}
-	while (nb != 0)
-	{
-		s[i] = hex[nb % 16];
-		nb /= 16;
-		n++;
-		i++;
-	}
-	while (i--)
-		write(1, &s[i], 1);
-	return (n);
-}
-
-
-
-size_t	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-
-
-size_t	ft_puthex(int nb)
-{
-	size_t	n;
-	char	hex[16] = "0123456789abcdef";
-	int		i;
-
-	n = 0;
-	i = 0;
-	if (nb == -2147483648)
-		write(1, "-2147483648", 11);
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-		ft_puthex(nb);
-		n++;
-	}
-	else if (nb > 15)
-	{
-		ft_puthex(nb / 16);
-		ft_puthex(nb % 16);
-	}
-	else
-	{
-		write(1, &hex[nb], 1);
-		n++;
-	}
-	return (n);
-}
-
-size_t ft_putunsigned(unsigned int nb)
-{
-    size_t n = 0;
-    char *s;
-    int i = 0;
-
-    if (nb == 0)
-    {
-        return ft_putchar('0');
-    }
-
-    // Count the number of digits in nb
-    unsigned int temp = nb;
-    while (temp != 0)
-    {
-        temp /= 10;
-        n++;
-    }
-
-    // Dynamically allocate memory for the character array
-    s = (char *)malloc(n + 1);
-    if (!s)
-        return 0;
-
-    // Store the digits in the character array
-    while (nb != 0)
-    {
-        s[i++] = (nb % 10) + '0';
-        nb /= 10;
-    }
-
-    // Print the digits in reverse order
-    while (i--)
-        write(1, &s[i], 1);
-
-    free(s);
-    return n;
-}
-
-*/

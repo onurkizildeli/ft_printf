@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkizilde <mkizilde@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/07 03:35:00 by mkizilde          #+#    #+#             */
+/*   Updated: 2023/08/07 03:35:00 by mkizilde         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*!SUBJECT
 ft_printf fonksiyonunu prototipi int ft_printf(const char *, ...); şeklinde
 olmalıdır.
@@ -25,6 +37,27 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 */
 
 #include "libft_printf.h"
+
+size_t	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+size_t	ft_putstr(char *s)
+{
+	size_t	i;
+	size_t	n;
+
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	n = i;
+	return (n);
+}
 
 int	format(char c, va_list ag)
 {

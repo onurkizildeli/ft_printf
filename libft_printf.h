@@ -1,10 +1,21 @@
-#ifndef	LIBFT_PRINTF_H
-#define LIBFT_PRINTF_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft_printf.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkizilde <mkizilde@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/07 03:25:11 by mkizilde          #+#    #+#             */
+/*   Updated: 2023/08/07 03:25:11 by mkizilde         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef LIBFT_PRINTF_H
+# define LIBFT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 size_t	ft_printf(const char *s, ...);
 size_t	ft_putchar(char c);
