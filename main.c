@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include "libft_printf.h"
+#include "ft_printf.h"
 
 /*!SUBJECT
 ft_printf fonksiyonunu prototipi int ft_printf(const char *, ...); şeklinde
@@ -60,34 +60,61 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 int	main(void)
 {
-	int a = 3;
+	int a = -3;
 	unsigned int b = 90;
+	//unsigned int b = 90;
 	char *str;
 	size_t j;
 	long long k;
 	int *p;
 	char s[] = "bu bir char array'dir";
+	char *s2 = "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus.";
 
-	ft_printf("deneme str p %p", str);
-	printf("\n");
-	printf("printf str p %p", str);
+	printf("printf str p %p", &str);
 	printf("\n");
 	// ft_printf("deneme %p", k);
 	// printf("\n");
-	// printf("printf %p", k);
+	// // printf("printf %p", k);
 	// printf("\n");
-	ft_printf("deneme a adres %p \n\n", &a);
-	printf("\n");
-	printf("printf a adres %p", &a);
-	printf("\n");
+	// ft_printf("deneme a adres %p \n\n", &a);
+	// printf("\n");
+	// printf("printf a adres %p", &a);
+	// printf("\n");
 	ft_printf("deneme %%");
 	printf("\n");
 	ft_printf("deneme %s", "hede");
 	printf("\n");
 	ft_printf("deneme %s", s);
 	printf("\n");
-	ft_printf("deneme complex test s = %s, s(p) = %p , int a = %d, unsigned b = %u", s, s, a, b);
+	ft_printf("deneme str p %p", &str);
 	printf("\n");
+	// ft_printf("deneme complex test s = %s, s(p) = %p , int a = %d, unsigned b = %u", s, s, a, b);
+	// printf("\n");
+	// 	ft_printf("deneme %s", "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus.");
+	// printf("\n");
+	// 	ft_printf("%s", "");
+	// printf("\n");
+	// 	ft_printf(" %s", "");
+	// printf("\n");
+	// 	ft_printf("%s ", "");
+	// printf("\n");
+	// 	ft_printf(" %s ", "");
+	// printf("\n");
+	// 	ft_printf(" %s ", "-");
+	// printf("\n");
+	// 	ft_printf(" %s %s ", "", "-");
+	// printf("\n");
+	// 	ft_printf(" %s %s ", " - ", "");
+	// printf("\n");
+	// 	ft_printf(" %s %s %s %s %s", " - ", "", "4", "", s2);
+	// printf("\n");
+	// 	ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+	// ft_printf("\n %d", -2147483648);
+	// ft_printf("\n %p", 0);
+	// printf("\n");
+	ft_printf(" NULL %s NULL ", NULL);
+	printf("\n");
+	printf(" NULL %s NULL ", NULL);
 }
 
 

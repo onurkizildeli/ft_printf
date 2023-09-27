@@ -8,7 +8,7 @@ CC				= gcc
 RM				= rm -f
 #CFLAGS			= -Wall -Wextra -Werror
 
-NAME			= libft.a
+NAME			= libftprintf.a
 
 all:			$(NAME)
 

@@ -36,33 +36,32 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 */
 
-#include "libft_printf.h"
+#include "ft_printf.h"
 
 size_t	ft_putnbr(int nb)
 {
 	int		n;
 	int		i;
 	char	s[16];
+	long	num;
 
+	num = (long)nb;
 	n = 0;
 	i = 0;
-	if (nb == 0)
+	if (num == 0)
 		n = ft_putchar('0');
-	if (nb < 0)
+	if (num < 0)
 	{
-		write(1, "-", 1);
-		nb = -nb;
-		n++;
+		n += write(1, "-", 1);
+		num = -num;
 	}
-	while (nb != 0)
+	while (num > 0)
 	{
-		s[i] = (nb % 10) + '0';
-		nb /= 10;
-		n++;
-		i++;
+		s[i++] = (num % 10) + '0';
+		num /= 10;
 	}
 	while (i--)
-		write(1, &s[i], 1);
+		n += write(1, &s[i], 1);
 	return (n);
 }
 
@@ -97,7 +96,6 @@ size_t	ft_puthex(unsigned int nb)
 
 	n = 0;
 	i = 0;
-	hex = (char *)malloc(sizeof(char) * 16);
 	hex = "0123456789abcdef";
 	if (nb == 0)
 	{
@@ -112,6 +110,7 @@ size_t	ft_puthex(unsigned int nb)
 	}
 	while (i--)
 		write(1, &s[i], 1);
+
 	return (n);
 }
 
@@ -124,7 +123,6 @@ size_t	ft_puthex_c(unsigned int nb)
 
 	n = 0;
 	i = 0;
-	hex = (char *)malloc(sizeof(char) * 16);
 	hex = "0123456789ABCDEF";
 	if (nb == 0)
 	{
@@ -150,20 +148,21 @@ size_t	ft_putptr(void *ptr)
 	char				s[16];
 	char				*hex;
 
-	temp = (unsigned long int)ptr;
 	n = 0;
 	i = 0;
-	hex = (char *)malloc(sizeof(char) * 16);
+	temp = (unsigned long int)ptr;
 	hex = "0123456789abcdef";
+	if (!temp)
+		return (write(1, "(nil)", 5));
+	if (ptr == NULL)
+		n += write(1, "0x0", 3);
 	while (temp != 0)
 	{
 		s[i++] = hex[temp % 16];
 		temp /= 16;
-		n++;
 	}
-	n += 2;
-	write(1, "0x", 2);
+	n += write(1, "0x", 2);
 	while (i--)
-		write(1, &s[i], 1);
+		n += write(1, &s[i], 1);
 	return (n);
 }

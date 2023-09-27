@@ -36,7 +36,7 @@ Gerekli dönüşümler hakkında kısa açıklamalar:
 
 */
 
-#include "libft_printf.h"
+#include "ft_printf.h"
 
 size_t	ft_putchar(char c)
 {
@@ -50,12 +50,17 @@ size_t	ft_putstr(char *s)
 	size_t	n;
 
 	i = 0;
+	n = 0;
+	if (!s)
+	{
+		n += write(1, "(null)", 6);
+		return (n);
+	}	
 	while (s[i])
 	{
-		write(1, &s[i], 1);
+		n += write(1, &s[i], 1);
 		i++;
 	}
-	n = i;
 	return (n);
 }
 
@@ -70,15 +75,15 @@ int	format(char c, va_list ag)
 	else if (c == 'd' || c == 'i')
 		n = ft_putnbr(va_arg(ag, int));
 	else if (c == '%')
-		ft_putchar('%');
+		n = ft_putchar('%');
 	else if (c == 'x')
-		ft_puthex(va_arg(ag, unsigned int ));
+		n = ft_puthex(va_arg(ag, unsigned int ));
 	else if (c == 'X')
-		ft_puthex(va_arg(ag, unsigned int ));
+		n = ft_puthex_c(va_arg(ag, unsigned int ));
 	else if (c == 'u')
-		ft_putunsigned(va_arg(ag, unsigned int));
+		n = ft_putunsigned(va_arg(ag, unsigned int));
 	else if (c == 'p')
-		ft_putptr(va_arg(ag, char *));
+		n = ft_putptr(va_arg(ag, char *));
 	return (n);
 }
 
@@ -93,17 +98,15 @@ size_t	ft_printf(const char *s, ...)
 	va_start(ag, s);
 	while (s[i])
 	{
-		if (s[i] == '%' && s[i + 1] != '\0')
+		if (s[i] == '%')
 		{
 			i++;
 			printed += format(s[i], ag);
-			i++;
 		}
 		else
-		{
 			printed += ft_putchar(s[i]);
-			i++;
-		}
+
+		i++;
 	}
 	va_end(ag);
 	return (printed);
